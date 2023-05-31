@@ -1,21 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import  ReactPlayer  from 'react-player'
-import PlayArrowIcon from "@mui/icons-material/PlayArrow"
-import AddIcon from "@mui/icons-material/Add"
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined"
-import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined"
-import "./ListItem.scss"
+import ReactPlayer from 'react-player'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import AddIcon from '@mui/icons-material/Add'
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
+import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined'
+import './ListItem.scss'
 
-
-
-function ListItem ({ item, index }) {
+function ListItem ({ item }) {
   const [isHovered, setIsHovered] = useState(false)
   return (
     <Link to={{ pathname: `/details/${item._id}` }} className='link'>
       <div
         className='listItem'
-        style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

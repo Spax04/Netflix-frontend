@@ -51,7 +51,7 @@ function List ({ list }) {
         draggable={false}
       >
         {list.contents.map((item, i) => (
-         <ListItem item={item} index={i} key={i}></ListItem>
+         <ListItem item={item} key={i}></ListItem>
 
         ))}
       </Carousel>

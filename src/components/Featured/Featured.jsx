@@ -17,7 +17,9 @@ function Featured ({type}) {
             let path = "contents/random";
             let pathtype = type?`?type=${type}`:"";
             const response = await axios.get(path+pathtype,{headers:{"authorization": `Bearer ${user.token}`}})
+           
             if(response){
+              console.log(response.data);
                 setRandomContent(response.data);
             }
         }catch(err){
@@ -50,7 +52,9 @@ function Featured ({type}) {
         <div className='buttons'>
           <button
             className='play'
-            onClick={() => navigate(`/watch/${randomContent._id}`)}
+            onClick={() => {navigate(`/watch/${randomContent._id}`)
+             console.log(randomContent._id);}}
+
           >
             <PlayArrowIcon />
             <span>Play</span>
