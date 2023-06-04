@@ -28,7 +28,9 @@ function ListItem ({ item }) {
             ></ReactPlayer>
             <div className='itemInfo'>
               <div className='icons'>
-                <PlayArrowIcon className='icon link' />
+                
+                  <Link to={`watch/${item._id}`}><PlayArrowIcon className='icon link' /></Link>
+
                 <AddIcon className='icon' />
                 <ThumbUpOutlinedIcon className='icon' />
                 <ThumbDownOffAltOutlinedIcon className='icon' />

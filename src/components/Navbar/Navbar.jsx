@@ -1,19 +1,23 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import SearchIcon from '@mui/icons-material/Search';
-import  ArrowDropDownIcon  from '@mui/icons-material/ArrowDropDown'
-import "./Navbar.scss"
-import { AuthContext } from '../../auth/authContext';
+import SearchIcon from '@mui/icons-material/Search'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import './Navbar.scss'
+import { AuthContext } from '../../auth/authContext'
+import { LOGOUT } from '../../auth/authAction'
 
 function Navbar () {
   const [isScrolled, setIsScrolled] = useState(false)
 
-
-  const {user} = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext)
   window.onscroll = () => {
     setIsScrolled(window.scrollY === 0 ? false : true)
 
     return () => (window.onscroll = null)
+  }
+
+  const logoutHandler = () => {
+    dispatch({ type: LOGOUT })
   }
 
   return (
@@ -35,28 +39,24 @@ function Navbar () {
           <Link to='/movies' className='link'>
             <span className='navbarmainLinks'>Movies</span>
           </Link>
-          {/* <Link to="/new-and-popular" className="link">
+          <Link to="/new-and-popular" className="link">
         <span>New and Popular</span>
-      </Link> */}
-          {/* <Link to="/my-list" className="link">
+      </Link> 
+           <Link to="/my-list" className="link">
         <span>My List</span>
-      </Link> */}
+      </Link>
         </div>
         <div className='right'>
           <Link className='link' to='/search'>
             <SearchIcon className='icon' />
           </Link>
           {/* <NotificationsIcon className="icon" /> */}
-          <img
-            src={user? user.profilePicture : "."}
-            alt=''
-          />
-          <p className='username'>{user? user.username : "."}</p>
+          <img src={user ? user.profilePicture : '.'} alt='' />
+          <p className='username'>{user ? user.username : '.'}</p>
           <div className='profile'>
             <ArrowDropDownIcon className='icon' />
             <div className='options'>
-              {/* <span onClick={logoutHandler}>Logout</span> */}
-              <span></span>
+              <span onClick={logoutHandler}>Logout</span>
             </div>
           </div>
         </div>
