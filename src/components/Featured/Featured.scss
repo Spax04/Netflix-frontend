@@ -24,9 +24,11 @@
   .info {
     width: 50%;
     position: absolute;
-    left: 50;
+    top: 150px;
+ 
     bottom: 100px;
     padding: 15%;
+    
 
     img {
       @include mobile {
