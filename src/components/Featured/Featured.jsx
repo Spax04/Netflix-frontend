@@ -1,42 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 import axios from 'axios'
 import './Featured.scss'
-import { AuthContext } from '../../auth/authContext';
+import { AuthContext } from '../../auth/authContext'
 
-function Featured ({type}) {
+function Featured ({ type }) {
   const [randomContent, setRandomContent] = useState({})
- const navigate = useNavigate()
- const {user} = useContext(AuthContext);
+  const navigate = useNavigate()
+  const { user } = useContext(AuthContext)
 
-  useEffect(()=>{
-    const getRandomContent = async ()=>{
-        try{
-            let path = "contents/random";
-            let pathtype = type?`?type=${type}`:"";
-            const response = await axios.get(path+pathtype,{headers:{"authorization": `Bearer ${user.token}`}})
-           
-            if(response){
-              console.log(response.data);
-                setRandomContent(response.data);
-            }
-        }catch(err){
-            console.log(err);
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        let path = 'contents/random'
+        let pathtype = type ? `?type=${type}` : ''
+        const response = await axios.get(path + pathtype, {
+          headers: { authorization: `Bearer ${user.token}` }
+        })
+
+        if (response) {
+          
+          setRandomContent(response.data)
         }
+      } catch (err) {
+        console.log(err)
+      }
     }
 
-    getRandomContent();
+    getRandomContent()
 
-    const interval = setInterval(()=>{
-        getRandomContent();
-    },4000)
+    const interval = setInterval(() => {
+      getRandomContent()
+    }, 4000)
 
-    return ()=>{
-        clearInterval(interval);
+    return () => {
+      clearInterval(interval)
     }
-  },[type])
+  }, [type])
 
   return (
     <div className='featured'>
@@ -52,9 +54,10 @@ function Featured ({type}) {
         <div className='buttons'>
           <button
             className='play'
-            onClick={() => {navigate(`/watch/${randomContent._id}`)
-             console.log(randomContent._id);}}
-
+            onClick={() => {
+              navigate(`/watch/${randomContent._id}`)
+              console.log(randomContent._id)
+            }}
           >
             <PlayArrowIcon />
             <span>Play</span>

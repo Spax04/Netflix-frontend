@@ -20,3 +20,13 @@ export const registerCall = async (newUser, dispatch) => {
     dispatch(LoginFail());
   }
 };
+
+// export const updateUserCall = async (user, dispatch) => {
+//   dispatch(LoginStart());
+//   try {
+//     const res = await axios.post('auth/register', newUser);
+//     dispatch(res.data ? LoginSuccess(res.data) : LoginFail());
+//   } catch (error) {
+//     dispatch(LoginFail());
+//   }
+// };
