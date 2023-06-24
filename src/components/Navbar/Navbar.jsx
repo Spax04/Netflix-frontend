@@ -39,9 +39,6 @@ function Navbar () {
           <Link to='/movies' className='link'>
             <span className='navbarmainLinks'>Movies</span>
           </Link>
-          <Link to="/new-and-popular" className="link">
-        <span>New and Popular</span>
-      </Link> 
            <Link to="/my-list" className="link">
         <span>My List</span>
       </Link>

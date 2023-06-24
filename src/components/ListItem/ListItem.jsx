@@ -19,16 +19,12 @@ function ListItem ({ item }) {
     try {
       dispatch({
         type: UPDATE_USER,
-        payload: item._id
+        payload: item
       });
-      console.log(user.myList)
 
      const res = await axios.post("user/",{...user},{
       headers: { authorization: `Bearer ${user.token}` }
     })
-     console.log(res.data);
-      // Update the list state with the new item
-      //setMyList(prevList => [...prevList, newItem]);
     } catch (error) {
       console.error('Error adding item:', error);
     }

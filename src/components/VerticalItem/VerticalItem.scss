@@ -1,0 +1,51 @@
+.content {
+  display: flex;
+
+  padding: 2rem;
+
+  img {
+    width: 200px;
+    height: 300px;
+    transition: 0.3s linear;
+    position: absolute;
+ 
+    z-index: 0;
+  }
+  
+    .playArrow {
+        color: white;
+        cursor: pointer;
+        width: 8rem;
+        height: 8rem;
+        position: relative;
+        
+        top: 4rem;
+        left: 2rem;
+        z-index: 1;
+        transition: 0.3s linear;
+        opacity: 0;
+      }
+    
+    
+  
+  .playArrow:hover{
+    opacity: 1;
+   
+  }
+
+ 
+  
+
+  
+  .innerContent {
+    padding-left: 1rem;
+    h1 {
+      color: white;
+    }
+    p {
+      color: white;
+    }
+    position: relative;
+
+  }
+}
